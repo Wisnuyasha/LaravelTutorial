@@ -42,7 +42,7 @@ class AboutPage extends Controller
                 'message' => 'Multi Image Inserted Successfully',
                 'alert_type' => 'success'
             );
-            return redirect()->back()->with($notification);
+            return redirect()->route('all.multi.image')->with($notification);
     }
 
     public function AllMulti() 
@@ -50,4 +50,51 @@ class AboutPage extends Controller
         $allMulti = MultiImage::all();
         return view('admin.home_slide.all_multi', compact('allMulti'));    
     }
+
+    public function EditMulti($id)
+    {
+        $multiImage = MultiImage::findOrFail($id);
+        return view('admin.home_slide.edit_multi', compact('multiImage'));
+    }
+
+    public function UpdateMulti(Request $request)
+    {
+        $multi_image_id = $request->id;
+
+        if ($request->file('multi_image')) {
+            $image = $request->file('multi_image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
+
+            Image::make($image)->resize(220,220)->save('upload/multi/'.$name_gen);
+            $save_url = 'upload/multi/'.$name_gen;
+
+            MultiImage::findOrFail($multi_image_id)->update([
+
+                'multi_image' => $save_url,
+
+            ]); 
+            $notification = array(
+            'message' => 'Multi Image Updated Successfully', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.multi.image')->with($notification);
+        }
+    }
+
+    public function DeleteMulti($id)
+    {
+        $multi = MultiImage::findOrFail($id);
+        $img = $multi->multi_image;
+        unlink($img);
+
+        MultiImage::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Multi Image Deleted Successfully', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+     }
 }

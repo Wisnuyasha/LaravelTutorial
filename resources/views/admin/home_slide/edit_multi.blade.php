@@ -10,17 +10,19 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="card-title">About Multi Image</h4>
+            <h4 class="card-title">Update Multi Image</h4>
 
-            <form method="post" action="{{ route('store.multi.image') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('update.multi.image') }}" enctype="multipart/form-data">
                 @csrf
+
+                <input type="hidden" name="id" value="{{ $multiImage->id }}">
 
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">
-                    About Multi Image</label>
+                    Update Multi Image</label>
                 <div class="col-sm-10">
-                    <input name="multi_image[]" class="form-control" type="file"  
-                    id="image" multiple="">
+                    <input name="multi_image" class="form-control" type="file"  
+                    id="image">
                 </div>
             </div> 
             <!-- end row -->
@@ -29,14 +31,13 @@
                 <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                <div class="col-sm-10">
                    <img id="showImage" class="rounded avatar-lg" 
-                   src="{{
-                   url('upload/no_image.jpg') }}" alt="Card image cap">
+                   src="{{ asset($multiImage->multi_image) }}" alt="Card image cap">
                </div>
            </div>
             <!-- end row -->
 
             <input type="submit" class="btn btn-info waves-effect waves-light" 
-            value="Add multi image">
+            value="Edit multi image">
             </form>
 
         </div>
