@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AboutPage;
 use App\Http\Controllers\Home\HomeSliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,15 @@ Route::controller(AdminController::class)->group(function () {
 Route::controller(HomeSliderController::class)->group(function() {
     Route::get('/home/slide', 'HomeSlide')->name('home.slide');
     Route::post('/update/slide', 'UpdateSlide')->name('update.slide');
+    Route::get('/home/about', 'HomeAbout')->name('home.about');
+    Route::post('/update/about', 'UpdateAbout')->name('update.about');
+});
+
+Route::controller(AboutPage::class)->group(function(){
+    Route::get('/about/page', 'AboutPage')->name('about.page');
+    Route::get('/about/multi/image', 'AboutMulti')->name('about.multi.image');
+    Route::post('/store/multi/image', 'StoreMulti')->name('update.multi.image');
+    Route::get('/all/multi/image', 'AllMulti')->name('all.multi.image');
 });
 
 

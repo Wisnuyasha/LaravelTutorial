@@ -10,17 +10,17 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="card-title">Home Slide Page </h4>
+            <h4 class="card-title">Home About Page </h4>
 
-            <form method="post" action="{{ route('update.slide') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('update.about') }}" enctype="multipart/form-data">
                 @csrf
 
-            <input name="id" type="hidden" value="{{ $homeslide->id }}">
+            <input name="id" type="hidden" value="{{ $homeabout->id }}">
 
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
-                    <input name="title" class="form-control" type="text" value="{{ $homeslide->title }}">
+                    <input name="title" class="form-control" type="text" value="{{ $homeabout->title }}">
                 </div>
             </div>
             <!-- end row -->
@@ -28,25 +28,36 @@
               <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                 <div class="col-sm-10">
-                    <input name="short_title" class="form-control" type="text" value="{{ $homeslide->short_title }}">
-                </div>
-            </div>
-            <!-- end row -->
-
-
-              <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Video URL</label>
-                <div class="col-sm-10">
-                    <input name="video_url" class="form-control" type="text" value="{{ $homeslide->video_url }}">
+                    <input name="short_title" class="form-control" type="text" value="{{ $homeabout->short_title }}">
                 </div>
             </div>
             <!-- end row -->
 
 
             <div class="row mb-3">
-                <label for="example-text-input" class="col-sm-2 col-form-label">Slider Image</label>
+                <label for="example-text-input" class="col-sm-2 col-form-label">Short Description</label>
                 <div class="col-sm-10">
-       <input name="home_slide" class="form-control" type="file"  id="image">
+                    <textarea required="" name="short_description"  class="form-control" rows="5"> 
+                        {{ $homeabout->short_description }}
+                    </textarea>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row mb-3">
+                <label for="example-text-input" class="col-sm-2 col-form-label">Long Description</label>
+                <div class="col-sm-10">
+                    <textarea required="" name="long_description"  class="form-control" rows="5">
+                        {{ $homeabout->long_description }}
+                    </textarea>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row mb-3">
+                <label for="example-text-input" class="col-sm-2 col-form-label">About Image</label>
+                <div class="col-sm-10">
+                    <input name="about_image" class="form-control" type="file"  id="image">
                 </div>
             </div>
             <!-- end row -->
@@ -55,8 +66,8 @@
                 <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                <div class="col-sm-10">
                    <img id="showImage" class="rounded avatar-lg" 
-                   src="{{ ( !empty( $homeslide->home_slide ))?
-                   url($homeslide->home_slide):
+                   src="{{ ( !empty($homeabout->about_image ))?
+                   url($homeabout->about_image):
                    url('upload/no_image.jpg') }}" alt="Card image cap">
                </div>
            </div>
