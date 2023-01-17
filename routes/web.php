@@ -65,6 +65,7 @@ Route::controller(PortfolioController::class)->group(function() {
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
     
+    Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
     Route::get('/details/portfolio/{id}', 'DetailsPortfolio')->name('details.portfolio');
 });
 
@@ -99,6 +100,7 @@ Route::controller(FooterController::class)->group(function() {
 Route::controller(ContactController::class)->group(function() {
     Route::get('/contact', 'Contact')->name('contact.me');
     Route::post('/store/message', 'StoreMessage')->name('store.message');
+
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');
 });
