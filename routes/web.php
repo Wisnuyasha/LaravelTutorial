@@ -9,6 +9,7 @@ use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\ContactController;
+use App\Http\Controllers\Demo\DemoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,8 +24,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
+
+Route::controller(DemoController::class)->group(function () {
+    Route::get('/', 'HomeMain')->name('home');
 });
 
 Route::get('/dashboard', function () {

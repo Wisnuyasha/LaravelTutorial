@@ -1,3 +1,7 @@
+@php
+$route = Route::current()->getName();
+@endphp
+
 <header>
     <div id="sticky-header" class="menu__area transparent-header">
         <div class="container custom-container">
@@ -12,28 +16,32 @@
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active">
-                                        <a href="{{ url('/') }}">
+                                    <li class="{{ ($route == 'home')? 'active' : '' }}">
+                                        <a href="{{ route('home') }}">
                                             Home
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ ($route == 'about.page')? 'active' : '' }}">
                                         <a href="{{ route('about.page') }}">
                                             About
                                         </a>
                                     </li>
-                                    <li><a href="services-details.html">Services</a></li>
-                                    <li class="menu-item-has-children">
+                                    <li>
+                                        <a href="services-details.html">
+                                            Services
+                                        </a>
+                                    </li>
+                                    <li class="{{ ($route == 'home.portfolio') ? 'active' : '' }}">
                                         <a href="{{ route('home.portfolio') }}">
                                             Portfolio
                                         </a>
                                     </li>
-                                    <li class="menu-item-has-children">
+                                    <li class="{{ ($route == 'home.blog') ? 'active' : '' }}">
                                         <a href="{{ route('home.blog') }}">
                                             Our Blog
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="{{ ($route == 'contact.me') ? 'active' : '' }}">
                                         <a href="{{ route('contact.me') }}">
                                         contact me
                                         </a>
