@@ -1,5 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
+
+@section('title')
+Home | inutreon Website
+@endsection
+
 {{-- {{ asset('frontend/' ) }} --}}
     <!-- banner-area -->
     @include('frontend.home_all.home_slide')

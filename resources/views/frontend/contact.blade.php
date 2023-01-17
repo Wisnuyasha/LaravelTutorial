@@ -1,6 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
 
+@section('title')
+Contact | inutreon Website
+@endsection
+
  <main>
 
             <!-- breadcrumb-area -->
