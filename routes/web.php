@@ -62,6 +62,7 @@ Route::controller(PortfolioController::class)->group(function() {
     Route::get('/edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
+    
     Route::get('/details/portfolio/{id}', 'DetailsPortfolio')->name('details.portfolio');
 });
 
@@ -81,6 +82,11 @@ Route::controller(BlogController::class)->group(function() {
     Route::get('/edit/blog/{id}', 'EditBlog')->name('edit.blog');
     Route::post('/update/blog', 'UpdateBlog')->name('update.blog');
     Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
+
+    Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
+    Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog');
+    Route::get('/blog', 'HomeBlog')->name('home.blog');
+
 });
 
 
